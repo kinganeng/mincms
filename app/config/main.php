@@ -29,7 +29,7 @@ $array =  array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 	'language'=>'zh_cn',
-    'runtimePath'=>dirname(__FILE__).'/../../_runtime',
+    'runtimePath'=>dirname(__FILE__).'/../../temp',
 	// preloading 'log' component
 	'preload'=>array('log'),
 

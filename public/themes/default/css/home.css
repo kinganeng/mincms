@@ -1,0 +1,127 @@
+
+.top{ margin:0 auto; width:1000px;}
+.logo{ vertical-align:middle; padding:33px 0 0 0; float:left;}
+.top_right{ background: url(../images/beijing.jpg) no-repeat; width:600px; height:139px; float:right;}
+.tel{ padding:15px 0 0 340px;}
+.pic{ padding:0 0 5px 0; font-size:14px;}
+.pic .china{ padding:0 0 0 30px;}
+.china{ font-size:16px; font-family: "微软雅黑", "宋体";}
+.china input{ background:url(../images/xia.png) no-repeat; width:16px; height:13px; border:none; margin:0 0 0 6px; vertical-align:middle; }
+.tupic span{ padding:0 4px 0 0;}
+.mainnav{ clear:both; background:#a8e3e4; height:45px; line-height:45px;}
+.nav{ margin:0 auto; width:1000px;}
+.nav li{ float:left; font-size:16px; }
+.nav li a{ color:#121212; display:block; padding:0 22px;}
+.nav .se, .nav li a:hover{ color: #c9151e; background:url(../images/linehui.jpg) repeat-x; display:block;}
+.middle{ margin:5px 0 0 0; background:url(../images/cbeizong.jpg) no-repeat center 0 #e6e6e5;}
+.one{ background:url(../images/cbei.jpg) no-repeat; margin:0 auto; width:1000px; height:382px;}
+.oneleft{ width:708px; float:left; position:relative;}
+.leftxin{ position:absolute; left:0; top:45px;}
+.onelist{ float:right; padding:30px 0 0 0;}
+.onelist li{ background:url(../images/hao.jpg) no-repeat 0 9px; margin:0 0 20px 0; padding:0 0 0 40px;}
+.onelist li p{ font-size:14px; padding:0 0 0 0; width:358px;}
+.onelist li .col a{ color:#1d1d1d; font-size:22px; }
+.onelist li .colone a{ color:#9e9f9f; font-size:22px; }
+.onelist li .col a:hover, .onelist li .colone a:hover{ color:#c9151e;}
+.oneright{ float:left; background:url(../images/cenbei.png) repeat; margin:25px 0 0 13px; padding:33px 25px 25px 25px;}
+.oneright dt{ color:#0066cc; font-size:24px; padding:0 0 16px 0;}
+.oneright dd{ padding:0 0 16px 0;}
+.oneright dd input{ background:#fff; border:none; width:168px; height:35px; padding:0 0 0 5px; line-height:35px;}
+.cti{ text-align:center;}
+.cti input{ background:url(../images/ctin.jpg) no-repeat; width:208px; height:62px; border: none; cursor:pointer;}
+.center{ margin:27px auto 0; width:1000px; padding:0 0 20px 0;}
+.c_name{ background:url(../images/tuhua.jpg) no-repeat; width:260px; height:43px; float:left; line-height:43px; padding:0 0 0 11px; color:#1d1d1d; font-size:26px;}
+.c_niu{ float: left;}
+.c_left{ float:left;}
+.tu{ clear:both;}
+.c_cen{ float:left; margin:0 30px 0 30px;}
+.c_right{ float:left; position:relative;}
+.png{ position: absolute; left:2px; bottom:0; cursor: pointer;}
+.tulist{ background:url(../images/beibei.jpg) no-repeat; width:305px; height:346px;}
+.tulist li{ line-height:29px; font-size:16px; padding:0 0 0 25px;}
+.tulist li a{ color:#000;}
+.tulist li a:hover{ color:#F00;}
+.msg{ font-size:16px; width:321px; padding:10px 0 0 0; line-height:25px;}
+.msg span{ font-weight:bold; font-style:italic;}
+.go{ padding:37px 0 0 0;}
+.tu table{ clear:both; margin:23px 0 0 0; width:297px;}
+.tu table td{ font-size:14px; text-align:center; line-height:30px; height:30px;}
+.tu table td img{ vertical-align:middle; padding:0 0 0 5px;}
+.clans{ background:#91d8da;}
+.clan{ background:#b1e6e7;}
+.tu table .clans, .tu table .clan{ line-height:25px;}
+.yanse{ background:#f1eded;}
+.biaozhi{ margin:25px  auto 0; width:1000px;}
+.b_line{ border-bottom:3px solid #a8e3e4;}
+.b_zong li{ float:left;}
+.b_msg{ width:328px;}
+.qiu{ text-align:center; padding:22px 0 16px 0;}
+.b_name{ color:#020202; font-size:22px; text-align:center; line-height:28px; padding:0 0 10px 15px; width:298px;}
+.b_msgz{  line-height:25px; font-size:14px; width:298px; padding:0 0 0 15px; height:auto!important;
+     height:186px;
+     min-height:186px;}
+.b_msgone{ background:url(../images/listbei.jpg) no-repeat 18px 0; padding:10px 0 0 0;}
+.b_msgone p{ padding:33px 0 0 30px; width:285px; height:172px;}
+.b_msgz span{ font-family:"微软雅黑", "宋体";}
+.d_red{ font-family:Verdana, Geneva, sans-serif; text-align:right; padding:0 20px 25px 0;}
+.d_red a{ color:#ca050f; text-decoration:underline;}
+.d_red a:hover{ color:#333;}
+.xu{ border-right:1px dashed #202020; height:270px; margin:100px 3px 0 3px;}
+.yinline{ text-align:center; padding:5px 0 22px 0;}
+.day{ width:1000px; margin:0 auto 25px; border-bottom:1px dashed #ccc; padding:0 0 13px 0;}
+.day_pic{ float:left;}
+.dayright{ float:left; margin:0 0 0 20px; width:630px;}
+.day_name{ font-size:26px; color:#c9151e; line-height:64px;}
+.day_msg{ line-height:22px; font-size:14px; padding:10px 0;}
+.d-more{ text-align:right; padding:0 20px 0 0;}
+.m-list{ margin:0 auto; width:1000px; padding:0 0 30px 0; }
+.m-list ul{ margin:0 -34px 30px 0; overflow:hidden; float:right;}
+.m-list li{ float:left; margin:0 48px 0 0; width:208px; display: inline; overflow:hidden;}
+.telzong{ clear:both; background:url(../images/tel.jpg) no-repeat;  height:122px; position:relative;}
+.pictel{ float:left; padding:30px 0 0 30px;}
+.date{ float: left; width:260px; text-align:center; font-size:16px; line-height:28px; margin:25px 0 0 0; color:#000; border-right:1px dashed #000;}
+.date span{ font-size:22px; color:#cd151f;}
+.callmsg{ float:left; width:295px; font-size:16px; color:#000; line-height:25px; padding:30px 0 0 50px;}
+.dh{ position:absolute; top:-10px; right:45px;}
+.pr{ padding:20px 0 0 20px; font-size:14px;}
+.pr span{ font-size:20px; color:#000; padding:0 20px 0 0 ;}
+.mo{ text-align:right; font-size:14px; padding:24px 0 0 0;}
+.mo a{ color:#cc0202; text-decoration:underline;}
+.mo a:hover{ color: #666;}
+.di-nav{ background: #a8e3e4; height:36px; line-height:36px;}
+.navzong{ margin:0 auto; width:1000px; }
+.di-nav ul{ padding:0 0 0 75px; }
+.di-nav li{ float:left; font-size:14px; color:#353434; }
+.di-nav li a{ border-right:1px solid #353434; padding:0 20px; text-align:center; color:#353434;}
+.di-nav .none a{ border-right: none;}
+.footer{ background:#e9f8f9; padding:18px 0 0 0;}
+.bottom{ width:1000px; margin:0 auto;}
+.footpic{ padding:0 50px 0 0; float:left;}
+.footmsg{ float:left; margin:22px 0 0 0; border-left:1px solid #a8e3e4; font-size:14px; line-height:20px; padding:0 0 0 40px;}
+.footmsg span{ font-weight:bold;}
+
+/*why mm*/
+.why{ padding:76px 0 0 0;}
+.picwh{ float:left;}
+.picright{ float:left; padding:25px 0 0 10px;}
+.picright p{ width:572px;}
+.whname{ font-size:26px; color:#1d1d1d; line-height:50px;}
+.whmsg{ font-family:"微软雅黑", "宋体"; line-height:25px; font-size:14px;}
+
+.whone{ padding:38px 0 0 0;}
+.onpic{ padding:0 0 29px 0;}
+.hi{ background:url(../images/w02.jpg) no-repeat; width:298px; height:262px;}
+.hi p{ padding:100px 10px 0 15px; font-family:"微软雅黑", "宋体"; line-height:20px;}
+.wh-right{ float:left; margin:0 0 0 21px;}
+.rilist{ border-bottom:2px solid #a8e3e4; line-height:30px; height:30px;}
+.rilist li{ float:left; font-size:14px; color:#3a3838; width:127px; text-align:center;}
+.listmsg{ border-top:1px dashed #a8e3e4; margin:2px 0 0 0; padding:22px 0 0 0; height:257px;}
+.rilist a.selected{ background: url(../images/w04.jpg) no-repeat; display:block;}
+.msgpic{ float:left;}
+.mpic{ float:left; font-size:14px; line-height:28px; font-family:"微软雅黑", "宋体"; padding:0 0 0 20px;}
+.whye{ padding:30px 0 0 0;}
+.whyeone{ padding:0 0 30px 0;}
+.yename{ background: url(../images/ye.jpg) no-repeat; width:205px; height:106px; text-align:center; color:#fff; font-size:30px; float:left; line-height:32px;}
+.yenameone{ line-height:106px;}
+.yenametwo{ padding:10px 0 0 0;}
+.yecon{ float:left; width:448px; font-size:14px; line-height:20px; font-family:"微软雅黑", "宋体"; padding:0 0 0 20px;}

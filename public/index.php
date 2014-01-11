@@ -7,21 +7,25 @@
 // | Licensed (http://mincms.com/licenses)
 // +----------------------------------------------------------------------
 // | Author: Kang Sun <fleaphp@msn.com>
-// +----------------------------------------------------------------------
-
+// +---------------------------------------------------------------------- 
 defined('YII_DEBUG') or define('YII_DEBUG',true);  
-$yii = __DIR__ . '/vendor/yiisoft/yii/framework/yii.php'; 
-$yiilite = __DIR__. '/vendor/yiisoft/yii/framework/yiilite.php'; 
-$config=dirname(__FILE__).'/app/config/main.php'; 
+$yii = __DIR__ . '/../vendor/yiisoft/yii/framework/yii.php'; 
+$yiilite = __DIR__. '/../vendor/yiisoft/yii/framework/yiilite.php'; 
+$config=__DIR__.'/../app/config/main.php'; 
 if(file_exists($yii)){
 	if(YII_DEBUG!==true)
 		$yii = $yiilite;
-}else{
+}else if(file_exists(__DIR__.'/../../yii/framework/yii.php')){
+	$yii = __DIR__.'/../../yii/framework/yii.php'; 
+	$yiilite = __DIR__.'/../../yii/framework/yiilite.php';
+	if(YII_DEBUG!==true)
+		$yii = $yiilite;
+} else{
 	$yii = __DIR__.'/../yii/framework/yii.php'; 
 	$yiilite = __DIR__.'/../yii/framework/yiilite.php';
 	if(YII_DEBUG!==true)
 		$yii = $yiilite;
-} 
+}
 if(!defined('YII_DEBUG')) define('YII_DEBUG',false); 
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 if(true === YII_DEBUG)
@@ -29,6 +33,6 @@ if(true === YII_DEBUG)
 else
 	error_reporting(0);
 require_once($yii); 
-require 'vendor/autoload.php'; 
+require __DIR__.'/../vendor/autoload.php'; 
 Yii::createWebApplication($config)->run();
 

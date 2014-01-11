@@ -41,7 +41,7 @@ class Controller extends CController
 	function init(){  
 		$this->request = Yii::app()->request;
 		$AssetManager = Yii::app()->getAssetManager();
-		$AssetManager->setBasePath(base_path().'/../_assets/'); 
+		$AssetManager->setBasePath(base_path().'/../public/_assets/'); 
 		$AssetManager->setBaseUrl(base_url().'/_assets');
 		
 		Yii::app()->theme = $this->theme;
