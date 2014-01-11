@@ -9,7 +9,8 @@
 	            
 	        ],
 	    	"files": [
-		     		
+		       "./app/helpers.php",
+		       "./app/Hook.php"		
 	    	],
 	        "psr-0": {
 		    	"app": "./" 

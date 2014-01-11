@@ -8,6 +8,8 @@
  		css_code("
  			.label-default a{color:#fff;}
  			label{display:block;}
+ 			.label{color:black;}
+ 			#acl label{margin-right:5px;}
  		");
  		js(base_url().'/misc/bootstrap/js/bootstrap.min.js');
  	 	js(base_url().'/misc/php.js');
@@ -29,12 +31,13 @@
       <ul class="nav navbar-nav">
       <?php $this->widget("application.modules.menu.widget.adminMenu");?>
       </ul> 				
-        
-      <ul class="nav navbar-nav navbar-right">
-      		<a href="<?php echo url('admin/logout/index');?>"> 
-        	<span class="glyphicon glyphicon-user"></span> <?php echo Yii::app()->user->username;?>
-        	<span class="glyphicon glyphicon-log-in" title="<?php echo __('logout');?>"></span></a>
-      </ul>
+      <?php if(!Yii::app()->user->isGuest){?>  
+	      <ul class="nav navbar-nav navbar-right">
+	      		<a href="<?php echo url('admin/logout/index');?>"> 
+	        	<span class="glyphicon glyphicon-user"></span> <?php echo Yii::app()->user->username;?>
+	        	<span class="glyphicon glyphicon-log-in" title="<?php echo __('logout');?>"></span></a>
+	      </ul>
+      <?php }?>
     </div><!--/.nav-collapse -->
   </div>
 </div>

@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
+    $baseDir . '/app/helpers.php',
+    $baseDir . '/app/Hook.php',
 );
