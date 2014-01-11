@@ -1,0 +1,23 @@
+{  
+	 
+	"require": {
+		"php": ">=5.3.0",  
+		"swiftmailer/swiftmailer": "5.1.*@dev"  
+	},
+        "autoload": {
+	        "classmap": [
+	            
+	        ],
+	    	"files": [
+		     		
+	    	],
+	        "psr-0": {
+		    	"app": "./" 
+	            
+	        }
+	 } 
+       
+ 
+ 
+}
+
