@@ -9,8 +9,15 @@
  	'pager' => '#cycle_pager2' ,
  	 'timeout'=>0
  	 
- )));
+ ))); 
+ foreach($posts as $p){
+ 	echo $p->id.'<br>';
+ }
+ $this->widget('LinkPager',array('pages'=>$pages)); 
+ 
+ exit;
  ?>
+ 
 <div class="middle">
         	<div class="one">
             	<div class="oneleft">

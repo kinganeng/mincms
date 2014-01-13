@@ -32,12 +32,12 @@ class LanguageHelper
 	}
    static $_url;
    static function img($table,$vid , $url='post/default/update'){ 
-   	    $str = "";
+   	    unset($str);
    	    $rows = self::languages($table,$vid); 
 		if($rows){
-			//defaultDBLangugeAll defaultDBLangugeAllCode
-			$all = cache('defaultDBLangugeAll');
+ 			$all = cache('defaultDBLangugeAll');
 			foreach($rows as $sid=>$language_id){   
+				unset($urls);
 				if(is_array($url)){	
 					$url[1]['id'] = $sid; 
 					$urls =  url($url[0],$url[1]);  

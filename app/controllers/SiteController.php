@@ -1,16 +1,18 @@
-﻿<?php
+<?php
 
 class SiteController extends FrontController
 { 
 	public function actionIndex()
-	{    
-		$node = Node::find('post',5);
-		dump($node);
-		echo 1;exit;
+	{     
+		 
 		//选中菜单 
 		Helper::set('activeMenu',"site.index"); 
-		$this->render('index');
+		$this->render('index',array(
+			'pages'=>$pages,
+			'posts'=>$posts,
+		));
 	}
+ 
 	
 	public function actionWhy()
 	{  
@@ -18,11 +20,19 @@ class SiteController extends FrontController
 		Helper::set('activeMenu',"site.why");
 		$this->render('why');
 	}
-	public function actionTest()
+	function actionTest(){
+	 
+		echo "<img src='".url('site/qr')."' />";
+	}
+	public function actionQr()
 	{  
 	 
-		$this->layout = false;
-		$this->render('test');
+	 	$qrCode = new \Endroid\QrCode\QrCode();
+		$qrCode->setText("http://mincms.com");
+		$qrCode->setSize(250);
+		$qrCode->setPadding(10);
+		echo $qrCode->render();
+		exit;
 	}
  
 	public function actionError()

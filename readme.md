@@ -10,7 +10,7 @@
     *   Composer
     *   Bootstrap 
     *   Yii 1.x 
-
+### window下安装 [Git Bash](http://msysgit.github.io/)
 
 
 

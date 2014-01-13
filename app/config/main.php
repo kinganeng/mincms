@@ -2,12 +2,12 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
- 
- 
-include dirname(__FILE__).'/modules.php'; 
+Yii::setPathOfAlias('app',__DIR__.'/../');
+Yii::setPathOfAlias('modules',__DIR__.'/../modules');
+include __DIR__.'/modules.php'; 
 if(is_array($include)){
 	foreach($include as $file){
-		include dirname(__FILE__).'/'.$file;
+		include __DIR__.'/'.$file;
 	}
 }
 $module_lists['gii'] = array( 

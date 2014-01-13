@@ -80,6 +80,7 @@ if(true === $uisort)
 				}
 			?>
 			<?php if($show===true){ 
+					unset($EURL,$DURL);
 					if(is_array($editUrl)){
 				 		$editUrl[1]['id'] = $v['id'];
 						$EURL =  url($editUrl[0],$editUrl[1]);  
