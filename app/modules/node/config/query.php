@@ -82,7 +82,7 @@ function node_config_language($v){
 $fields = $model->fields;
 $rules = array();
 $i = 0;
-foreach($fields as $v){  
+foreach($fields as $v){   
 	$name = $v->name;
 	$search = false;
 	if($v->search==1) $search = true;
@@ -91,12 +91,14 @@ foreach($fields as $v){
 	$arr[$v->name]['label'] = $v->label;
 	$arr[$v->name]['type'] = $v->type;
 	$arr[$v->name]['index'] = $indexes?:false;
-	$arr[$v->name]['search'] = $search?:false;
+	$arr[$v->name]['search'] = $search?:false; 
+	$arr[$v->name]['widget'] = $v->_widget;
 	//单个Node_Field的具体信息
 	$arr[$v->name]['model'] = $v;
+	$arr[$v->name]['mvalue'] = $v->mvalue;
 //	$arr[$v->name]['datas'] = $v->search; 
 	//当前的值
-	$arr[$v->name]['_value'] = 4;
+	//$arr[$v->name]['_value'] = 4;
 	//是否保存到关联表
 	if($v->relation && $v->mvalue==1){
 		$arr[$v->name]['_relation_table'] = true;

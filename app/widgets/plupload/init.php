@@ -16,7 +16,10 @@ class Widgets_Plupload_Init extends CWidget
  	public $ext = '*';
  	public $max_file_size = '100mb';
  	public $info = 'upload';
+ 	public $multi = true;
+ 	public $max = 1000;
 	function run(){  
+		if($this->multi === false) $this->max = 1;
 		$base = publish(dirname(__FILE__).'/assets'); 
 		core_js('jquery');
 		core_js('jquery.ui');
@@ -33,6 +36,7 @@ class Widgets_Plupload_Init extends CWidget
 		container : '".$container."',
 		multipart_params:{field:'".$this->field."'},
 		max_file_size : '".$this->max_file_size."',
+		multi_selection:'".$this->multi."',
 		url : '".$this->url."',
 		flash_swf_url : '".$base."/plupload.flash.swf',
 		silverlight_xap_url : '".$base."plupload.silverlight.xap',
@@ -52,6 +56,10 @@ class Widgets_Plupload_Init extends CWidget
 	uploader_".md5($this->field).".init();
 
 	uploader_".md5($this->field).".bind('FilesAdded', function(up, files) {
+		if (up.files.length > ".$this->max.") {
+			alert('".__('not allow upload')."');
+            return false;
+        }
 		$.each(files, function(i, file) {
 			$('#".$filelist."').append(
 				'<div id=\"' + file.id + '\">' +
@@ -59,7 +67,7 @@ class Widgets_Plupload_Init extends CWidget
 			'</div>');
 			uploader_".md5($this->field).".start();  
 		});
-
+		
 		up.refresh(); // Reposition Flash/Silverlight
 	});
 

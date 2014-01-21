@@ -1,5 +1,8 @@
 <?php 
 return  array (
+  'not allow upload' => '不允许上传',
+  'img' => '独立图片',
+  'gg' => '公告',
   'install' => '安装',
   'app modules' => '项目模块',
   'myself' => '只能操作自己的数据',

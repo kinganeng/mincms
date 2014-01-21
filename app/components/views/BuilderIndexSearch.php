@@ -1,4 +1,4 @@
-<div class='well'>
+<div class='well '>
 <?php $searchForm=$this->beginWidget('CActiveForm', array(
  	'action'=>$indexUrl,
 	'method'=>'GET',

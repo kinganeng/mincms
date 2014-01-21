@@ -20,7 +20,7 @@ class DefaultController extends AdminController
 			}
 		}
 		if($_POST['config']){
-			$config = $_POST['config'];
+			$config = $_POST['config']; 
 			if($config){
 				CDB()->update('configs',array('body'=>""));
 				foreach($config as $k=>$v){

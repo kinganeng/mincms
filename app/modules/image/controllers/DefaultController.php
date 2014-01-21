@@ -35,7 +35,7 @@ class DefaultController extends Controller
 		$name = substr($name,0,strrpos($name,'.')); 
 		$l = strpos($name,'='); 
 		//生成新的文件名
-		$new_name = root_path().'/imagine/'.$name.'.'.$ext; 
+		$new_name = root_path().'/public/imagine/'.$name.'.'.$ext; 
 		//取得encode的数组
 		$json = substr($name,$l+1);   
 		$name = substr($name,0,$l);   
@@ -43,7 +43,7 @@ class DefaultController extends Controller
 		//完整文件名
 		$file = $name.'.'.$ext;
 		//文件所在路径 
-		$file_path = root_path().'/'.$file;  
+		$file_path = root_path().'/public/'.$file;  
  
 		if(!file_exists($file_path)){
 			//如原文件不存在直接返回

@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: Kang Sun <fleaphp@msn.com>
 // +----------------------------------------------------------------------
-class file{
+class image{
 	//CHtml 类型
 	public $type = null;
 	//是否创建字段
@@ -23,9 +23,17 @@ class file{
 			
 		});
 	}
-	function action($name,$model){
+	function action($name,$model,$v){ 
+	 	if($v){
+	 		if(is_array($v)){
+	 			
+	 		}else{
+	 			$value = CDB()->from('attachments')->where('id=:id',array(':id'=>$v))->queryAll();
+	 		}
+	 	}
 		$name = "AutoModel[$name]";
-		echo widget('plupload',array('field'=>$name));
+		
+		echo widget('plupload',array('field'=>$name,'multi'=>false,'values'=>$value));
 		
 	}
 	

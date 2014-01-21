@@ -14,11 +14,13 @@ class QueryController extends AdminController
 	public $active = array('node.default');
 	public $table;
 	public $getid;
+	public $title;
 	function init(){
 		parent::init(); 
 		$this->getid = (int)$_GET['fid'];
 		$model = NodeContent::model()->findByPk($this->getid);
 		$this->table = "field_".trim($model->name);
+		$this->title = __($model->discription)?:__($model->name);
 	}
  
 	public function actionIndex()
@@ -27,6 +29,7 @@ class QueryController extends AdminController
 		$this->render('index',array(
 			'table'=>$this->table,
 			'fid'=>$this->getid,
+			'title'=>$this->title,
 		));
 	}
 	public function actionCreate()
@@ -34,6 +37,7 @@ class QueryController extends AdminController
 		$this->render('create',array(
 			'table'=>$this->table,
 			'fid'=>$this->getid,
+			'title'=>$this->title,
 		));
 	}
 	public function actionUpdate()
@@ -41,6 +45,7 @@ class QueryController extends AdminController
 		$this->render('update',array(
 			'table'=>$this->table,
 			'fid'=>$this->getid,
+			'title'=>$this->title,
 		)); 
 	}
 	public function actionDelete()
@@ -60,11 +65,12 @@ class QueryController extends AdminController
 		}
 	 	
 	}
-	public function actionSort(){  exit;
- 		$ids = $sort = $_POST['ids'];  
+	public function actionSort(){  
+ 		$ids = $sort = $_POST['ids'];   
  		arsort($sort); 
  		$sort = array_merge($sort,array()); 
- 		$table = "node__content";
+ 		$table = $_POST['table'];
+ 		if(!$table) exit;
  		$fid = $id; 
  		foreach($ids as $k=>$id){ 
  		 	Yii::app()->db->createCommand()->update($table,

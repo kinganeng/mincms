@@ -40,8 +40,8 @@ class FileHelper
 	}
 	function upload($http_url=null){ 
 		$url = "upload/".date('Y').'/'.date('m').'/'.date('d');
-		$dir = root_path().'/'.$url; 
-		$temp_dir = root_path().'/upload/temp';
+		$dir = root_path().'/public/'.$url; 
+		$temp_dir = root_path().'/public/upload/temp';
 		if(!is_dir($dir)) mkdir($dir,0775,true);
 		if(!is_dir($temp_dir)) mkdir($temp_dir,0775,true); 
 		if($http_url) {

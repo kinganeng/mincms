@@ -55,7 +55,7 @@ $array =  array(
 	
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-			'urlSuffix'=>'.html',
+		//	'urlSuffix'=>'.html',
             'showScriptName'=>false,
 			'rules'=>$urlManager,
 		),
@@ -104,6 +104,9 @@ $array =  array(
 		'checkBrowsLanguage'=>true,
 		'debug'=>true,
 		'hash'=>md5('default_hash'),
+		'admin_config'=>array(
+			'title','seo','open','callus','copy'	
+		),
 		//发送邮件配置
 		'PHPMailer'=>array(
 			'Host'=>'smtp.qq.com',

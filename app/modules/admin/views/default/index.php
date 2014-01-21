@@ -13,15 +13,12 @@
 	'id'=>'form-'.mt_rand(0,9999),
 	'enableAjaxValidation'=>false,
 )); ?> 
- 
+ 	<?php foreach(Yii::app()->params['admin_config'] as $v){?>
 	<div class="form-group">
-		<label><?php echo __('title');?></label>
-		<?php echo CHtml::textField('config[title]',$title,array("class"=>"form-control"));?>
+		<label><?php echo __($v);?></label>
+		<?php echo CHtml::textArea("config[$v]",$$v,array("class"=>"form-control"));?>
 	</div> 
-	<div class="form-group">
-		<label><?php echo __('seo');?></label>
-		<?php echo CHtml::textArea('config[seo]',$seo,array("class"=>"form-control"));?>
-	</div> 
+	<?php }?> 
 	<div class="form-group">
 		<label><?php echo __('muit language support');?></label>
 		<?php echo CHtml::checkBox('config[mlanguage]',$mlanguage,array());?>

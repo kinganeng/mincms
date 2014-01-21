@@ -29,9 +29,10 @@ class Helper
 		//字段类型 对应application.fields下的文件名
 		$type = $v['type'];
 		$obj = new $type;
-		$chtmlField = $obj->type;     
+		$chtmlField = $obj->type;    
+	 
 		if($v['widget']){
-			foreach($v['widget'] as $k=>$vo){
+			foreach($v['widget'] as $k=>$vo){ 
 				echo widget($k,$vo);
 			}
 		}

@@ -35,7 +35,7 @@ class FieldController extends AdminController
 		$this->render('index',$data);
 	}
 	function _cache(){
-		cache('node__content',false);
+		cache('node__content_field',false);
 	}
 	/**
 	* 对字段类型AJAX请求，生成HOOK，以及可能需要的HTML
@@ -99,7 +99,7 @@ class FieldController extends AdminController
 					$this->add($table,$model);
 				}
 				$this->_cache();
-			//	$this->redirect(array('index','id'=>$id));
+				$this->redirect(array('index','id'=>$id));
 			}
 		}
 	 
@@ -114,10 +114,10 @@ class FieldController extends AdminController
 	function actionUpdate($id){ 
 		$model= NodeField::model()->findByPk($id); 
 		$cont = NodeContent::model()->findByPk($model->node_content_id);  
-		$model->display = 1;
-		$model->node_content_id = $id;  
+		$model->display = 1; 
 		if(isset($_POST['NodeField']))
 		{
+			unset($_POST['NodeField']['node_content_id']);
 			$model->attributes=$_POST['NodeField']; 
 			$model->widget=$_POST['NodeField']['widget']; 
 			$model->rules=$_POST['NodeField']['rules']; 

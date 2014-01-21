@@ -41,7 +41,7 @@ class BuilderView extends Widget{
  		$_AutoModel = $row['_AutoModel'];
  		//关联表的表名
  		$this->relation_table = $row['_relation_table']; 
- 		$_config = cache('config');
+ 		$_config = cache('config'); 
  		if(!$_config['mlanguage']){
  			unset($row['_multiLanguage'],$row['language_id']);
  		}
@@ -114,22 +114,29 @@ class BuilderView extends Widget{
 				//关联到其他表的值
 				$NodeField = $_POST['NodeField'];
 				if($NodeField){
-					foreach($NodeField as $key=>$value){
+					foreach($NodeField as $key=>$value){ 
 						//关联表名
 						$rale = $this->relation_table[$key];
 						//用来保存到数据库的
 						$relation_datas[$rale] = $value;
 					}
 				}
-			  
+			 
+				
 				//对AutoModel属性赋值
 				foreach($row as $key=>$value){ 
+					$postV = $_POST['AutoModel'][$key];
+					//判断是否是多值
+					if($NodeField[$key]['mvalue']!=1 && is_array($postV)){
+						 $postV = ArrHelper::first($postV);
+					}elseif(is_array($postV)){
+						$postV = serialize ($postV);
+					}
 					//当字段配置中 insert 值为false时不写入主表
 					if($value['insert'] === false) continue;
-					$this->model->$key = trim($_POST['AutoModel'][$key]); 
-					$saveDatas[$key]   = trim($_POST['AutoModel'][$key]);
-				}  
-			 
+					$this->model->$key = trim($postV); 
+					$saveDatas[$key]   = trim($postV);
+				}   
 				//验证规则
 			 	if($this->model->validate()){  
 			 		$column = cache('DBColumns_'.$this->table);
@@ -193,9 +200,21 @@ class BuilderView extends Widget{
 			 				foreach($updateDatas as $_k=>$_v){
 			 					$saveDatas[$_k] = $_v;
 			 				}
-			 			} 
-			 			if($fixVid){
-			 				$this->db->insert($this->table, $saveDatas);
+			 			}  
+			 		 
+			 			
+			 			if($fixVid){  
+			 				if(!$this->db->from($this->table)->where(
+			 					'vid='.$fixVid.' and language_id='.$saveDatas['language_id'] 
+			 				)->queryRow()){
+			 				 
+			 					$this->db->insert($this->table, $saveDatas);
+			 				}else{
+			 					unset($saveDatas['vid']);
+			 					
+			 					$this->db->update($this->table, $saveDatas, 'id=:id', array(':id'=>$id));
+			 				}
+			 				 
 			 			}else{
 			 				unset($saveDatas['vid']);
 			 				$this->db->update($this->table, $saveDatas, 'id=:id', array(':id'=>$id));

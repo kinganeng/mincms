@@ -10,6 +10,14 @@
 // +----------------------------------------------------------------------
  
 class Node{   
+	static function file($id){ 
+		$data = cache('attachment_'.$id);
+		if(!$data){
+			$data = CDB()->from('attachments')->where('id=:id',array(':id'=>$id))->queryRow();
+			cache('attachment_'.$id,$data);
+		}
+		return $data;
+	}
  	/**
 	*
 	$criteria =  new CDbCriteria();
@@ -30,27 +38,36 @@ class Node{
 	Node::find('post',1); 
 	*/
 	static function find($table,$criteria,$pager = false,$pageSize = 10){
+		if(!is_object($criteria)) {
+			$id = $criteria;  
+		}
 		 //所以字段key以及对应的model
 		 $cache = cache('node__field_table');
 		 $now = $cache[$table];
-		 $realTable = "field_".$table; 
-		 if(!is_object($criteria)) $id = $criteria;  
-		 //设置NodeModel的表名
+		 $realTable = "field_".$table;  
+		 //设置NodeModel的表名 
 		 NodeModel::$_table = $realTable; 
+		 $t = new NodeModel;
+		 $t->refreshMetaData();
 		 if(is_object($criteria)) { 
 		 	if(true === $pager){
 			 	$count = NodeModel::model()->count($criteria);     
 			 	$pages    =  new CPagination($count); 
 			    $pages->pageSize = $pageSize ;  
 			    $pages->applyLimit($criteria); 
-		    }
+		    } 
 		    $posts = NodeModel::model()->findAll($criteria); 
-		 	if(!$posts) return null;
+		 	if(!$posts) return null; 
 		 	foreach($posts as $r){  
-		 		$allRows[$r->id] = static::find($table,$r->id); 
+		 		$allRows[] = static::find($table,$r->id); 
 		 	}
-		 	if(true === $pager) 
-		 		return array('posts'=>$allRows,'pages'=>$pages);
+		 	if(true === $pager) {
+		 		$out = array('posts'=>$allRows,'pages'=>$pages); 
+		 		return $out;
+		 	}   
+		 	if($criteria->limit==1){
+		    	return ArrHelper::first($allRows);
+		    }
 		 	return $allRows;
 		 }   
 		 $fields = cache('node__content_field'); 
@@ -86,9 +103,9 @@ class Node{
 				$value = CDB()->from($deep)->where('id=:id',array(':id'=>$row[$name]))->queryRow();
 				$row[$name] = $value;
 			}
-		 }
+		 } 
 		 return $row;
-		 
+	 
 	}
 	
 		 
@@ -107,9 +124,8 @@ Hook::init('init[].node_content',function(){
 		if($rows){
 			foreach($rows as $v){
 				$data[$v->id] = $v->name;
-				$id = $v->id;
-				unset($d);
-				
+				$data2[$v->id] = array($v->name,$v->discription);
+				$id = $v->id; 
 				foreach($v->fields as $f){
 					$field[$id]['id'] = $f->id;
 					$field[$id]['name'] = $f->name;
@@ -126,8 +142,9 @@ Hook::init('init[].node_content',function(){
 					$d[$v->name]['updated'] = 'updated';
 					$d[$v->name][$f->name] = $f->name;
 				}
-			} 
+			}  
 			cache('node__content',$data); 
+			cache('node__contentfull',$data2); 
 			cache('node__field',$field);
 			cache('node__content_field',$d);
 			cache('node__field_table',$field_table);

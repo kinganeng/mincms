@@ -12,11 +12,12 @@ class NodeModel extends ActiveRecord
 {
    
     static $_table;
-     
+    
 	public function tableName()
-	{
+	{ 
 		return static::$_table;
 	} 
+	 
 	
  	public static function model($className=__CLASS__)
 	{

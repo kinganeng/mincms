@@ -12,7 +12,10 @@
 function CDB($sql=null){
 	return Yii::app()->db->createCommand($sql);
 }
- 
+// keywords
+function seo($value,$name='keywords'){
+	Yii::app()->clientScript->registerMetaTag($value,$name);
+}
 /**
 * current controller action's url
 *

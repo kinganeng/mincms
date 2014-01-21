@@ -27,7 +27,7 @@ class BuilderIndex extends BuilderView{
 	* 对于db类的更多方法
 	* 这是方法()
 	*/
-	public $function = array( "order"=>'id desc');
+	public $function = array( "order"=>'sort desc,id desc');
 	/**
 	* 这是 =  
 	*/
@@ -37,7 +37,7 @@ class BuilderIndex extends BuilderView{
 	 	foreach($this->row as $k=>$v){
 	 		if($v['search'])
 	 			$this->search = true;
-	 	}
+	 	} 
 	 	if(true === $this->uisort){
 	 		if(!$this->uisortUrl)
 	    		$this->uisortUrl = url($this->controller->module->id.'/'.$this->controller->id.'/sort');

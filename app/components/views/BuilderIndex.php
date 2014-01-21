@@ -13,7 +13,7 @@ $('.search-button').click(function(){
 ?> 
 <?php if($search){?>  
 	<?php echo CHtml::link(__('<span class="glyphicon glyphicon-search"></span>'),'#',array('class'=>'search-button')); ?>
-	<div class="search-form" <?php if(!$_GET){?>style="display:none"<?php }?>>
+	<div class="search-form" style="display:none">
 	<?php $this->render('BuilderIndexSearch',array(
 		'model'=>$model,
 		'row'=>$row,
@@ -45,9 +45,10 @@ if(true === $uisort)
 		</tr>
 	</thead>
 	<tbody>
+		<input type="hidden" name='table' value="<?php echo $table;?>">
 		<?php foreach($posts as $v){  ?>
 		<tr>
-			<td><?php echo $v['id'];?></td>
+			<td><?php echo $v['id'];?><input type='hidden' name='ids[]' value="<?php echo $v['id'];?>"></td>
 			<?php 
 				foreach($row as $name=>$r){ 
 					if(true === $r['index']){
