@@ -18,7 +18,7 @@ $module_lists['gii'] = array(
 	
 // 加载URL路由配置
 $urlManager  = include dirname(__FILE__).'/urlManager.php'; 
-$urlManager['imagine']='image/default/index';
+$urlManager['imagecache']='image/default/index';
 $urlManager['<controller:\w+>/<id:\d+>']='<controller>/view';
 $urlManager['<controller:\w+>/<action:\w+>/<id:\d+>']='<controller>/<action>';
 $urlManager['<controller:\w+>/<action:\w+>']='<controller>/<action>'; 

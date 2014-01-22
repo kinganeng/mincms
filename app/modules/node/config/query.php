@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | ¶Ô×Ô¶¯Éú³ÉµÄ±ífield_{name} Éú³ÉÅäÖÃÎÄ¼ş 
+// | å¯¹è‡ªåŠ¨ç”Ÿæˆçš„è¡¨field_{name} ç”Ÿæˆé…ç½®æ–‡ä»¶ 
 // +----------------------------------------------------------------------
 // | Copyright (c) 2014 http://mincms.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -11,7 +11,7 @@
 $fid = (int)$_GET['fid'];
 $model = NodeContent::model()->findByPk($fid);
 /**
-* È¡µÃ·ÖÀà
+* å–å¾—åˆ†ç±»
 */
 class Module_Node_Query{
 	static function category(){
@@ -30,7 +30,7 @@ class Module_Node_Query{
 	}
 	
 	/**
-	* ÓïÑÔ
+	* è¯­è¨€
 	*/
 	static function language(){
 		$rows = Yii::app()->db->createCommand() 
@@ -56,7 +56,7 @@ $language = Module_Node_Query::language();
 $language[""] = __('please select'); 
 
 /**
-* ÁĞ±íÖĞÏÔÊ¾¶ÔÓ¦·ÖÀàµÄÃû³Æ
+* åˆ—è¡¨ä¸­æ˜¾ç¤ºå¯¹åº”åˆ†ç±»çš„åç§°
 */
 function node_config_cateogry($v){
 	$id = $v['category_id'];
@@ -66,7 +66,7 @@ function node_config_cateogry($v){
 	return $v->name;
 }
 /**
-* ÓïÑÔ
+* è¯­è¨€
 */
 global $global_field_table;
 $global_field_table = "field_".$model->name;
@@ -83,34 +83,34 @@ $fields = $model->fields;
 $rules = array();
 $i = 0;
 foreach($fields as $v){   
-	$name = $v->name;
+	$name = trim($v->name);
 	$search = false;
 	if($v->search==1) $search = true;
 	$indexes = false;
 	if($v->indexes==1) $indexes = true;
-	$arr[$v->name]['label'] = $v->label;
-	$arr[$v->name]['type'] = $v->type;
-	$arr[$v->name]['index'] = $indexes?:false;
-	$arr[$v->name]['search'] = $search?:false; 
-	$arr[$v->name]['widget'] = $v->_widget;
-	//µ¥¸öNode_FieldµÄ¾ßÌåĞÅÏ¢
-	$arr[$v->name]['model'] = $v;
-	$arr[$v->name]['mvalue'] = $v->mvalue;
-//	$arr[$v->name]['datas'] = $v->search; 
-	//µ±Ç°µÄÖµ
-	//$arr[$v->name]['_value'] = 4;
-	//ÊÇ·ñ±£´æµ½¹ØÁª±í
+	$arr[$name]['label'] = trim($v->label);
+	$arr[$name]['type'] = $v->type;
+	$arr[$name]['index'] = $indexes?:false;
+	$arr[$name]['search'] = $search?:false; 
+	$arr[$name]['widget'] = $v->_widget;
+	//å•ä¸ªNode_Fieldçš„å…·ä½“ä¿¡æ¯
+	$arr[$name]['model'] = $v;
+	$arr[$name]['mvalue'] = $v->mvalue;
+//	$arr[$name]['datas'] = $v->search; 
+	//å½“å‰çš„å€¼
+	//$arr[$name]['_value'] = 4;
+	//æ˜¯å¦ä¿å­˜åˆ°å…³è”è¡¨
 	if($v->relation && $v->mvalue==1){
-		$arr[$v->name]['_relation_table'] = true;
-		$relation_table[$v->name] = "field_".$model->name.'_'.$v->name;
-		$arr[$v->name]['insert'] = false;
+		$arr[$name]['_relation_table'] = true;
+		$relation_table[$name] = "field_".$model->name.'_'.$name;
+		$arr[$name]['insert'] = false;
 	}
 	$r = $v->_rules;
  
 	if($r){ 
 		
 		foreach($r as $_k=>$_v){
-			$rules[$i][] = $v->name;
+			$rules[$i][] = $name;
 			if(!is_array($_v) && is_bool($_v))
 				$rules[$i][] = $_k;
 			else{
@@ -136,15 +136,15 @@ $arr['language_id']=array(
 		
 $arr['_error'] = 1;
 $arr['_rules'] = $rules;
-//ÊÇ·ñÊÇÊı¾İ¿â¶àÓïÑÔ
+//æ˜¯å¦æ˜¯æ•°æ®åº“å¤šè¯­è¨€
 $arr['_multiLanguage'] = true;
 /**
-* ¹ØÁª±íµÄĞÅÏ¢£¬ Êı×ékeyÎª×Ö¶ÎÃû£¬ÖµÎªÍêÕû±íÃû
+* å…³è”è¡¨çš„ä¿¡æ¯ï¼Œ æ•°ç»„keyä¸ºå­—æ®µåï¼Œå€¼ä¸ºå®Œæ•´è¡¨å
 */
 $arr['_relation_table'] = $relation_table;
 
  
-//Ä£¿é
+//æ¨¡å—
 $arr['_AutoModel'] = array(
 		'AdminUid'	,'Time','Vid','Uuid'
 );

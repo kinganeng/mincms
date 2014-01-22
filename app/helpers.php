@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | 实用YII乱写函数
+// | 实用YII函数
 // +----------------------------------------------------------------------
 // | Copyright (c) 2014 http://mincms.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -8,13 +8,15 @@
 // +----------------------------------------------------------------------
 // | Author: Kang Sun <fleaphp@msn.com>
 // +----------------------------------------------------------------------
-
 function CDB($sql=null){
 	return Yii::app()->db->createCommand($sql);
 }
 // keywords
 function seo($value,$name='keywords'){
 	Yii::app()->clientScript->registerMetaTag($value,$name);
+}
+function clean($str){
+	return strip_tags($str);
 }
 /**
 * current controller action's url

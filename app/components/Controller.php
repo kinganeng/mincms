@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: Kang Sun <fleaphp@msn.com>
 // +----------------------------------------------------------------------
-
+ 
 class Controller extends CController
 {
 	/**
@@ -38,7 +38,7 @@ class Controller extends CController
 		parent::beforeAction($action); 
 		return true;
 	}
-	function init(){  
+	function init(){   
 		$this->request = Yii::app()->request;
 		$AssetManager = Yii::app()->getAssetManager();
 		$AssetManager->setBasePath(base_path().'/../public/_assets/'); 
