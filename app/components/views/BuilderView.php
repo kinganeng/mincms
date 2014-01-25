@@ -33,7 +33,8 @@ if(true === $multiLanguage && $model->id>0){?>
 	<?php if($error) echo $form->errorSummary($model); ?>  
 	
 	<?php foreach($row as $k=>$v){
-			
+	$output = Helper::builder( array('form'=>$form,'model'=>$model,'name'=>$k,'v'=>$v));
+	if(!$output) continue;
 	?>
 		<div class="form-group">
 			<?php if($v['label']){?>
@@ -41,7 +42,7 @@ if(true === $multiLanguage && $model->id>0){?>
 			<?php }else{?>
 				<?php echo $form->labelEx($model,$k); ?> 
 			<?php }?>
-			<?php echo Helper::builder( array('form'=>$form,'model'=>$model,'name'=>$k,'v'=>$v)); ?>
+			<?php echo $output; ?>
 			<?php if(!$error) echo $form->error($model,$k); ?>
 		</div> 
  	<?php }?>

@@ -1,21 +1,6 @@
  <?php $menus = menu_function::admin();
         foreach($menus as $v){    
-        	if($v['name']=='node'){
-        		$d = cache('node__contentfull'); 
-        		if($d){
-        			$out[0]['name'] = __('node');
-        			$out[0]['url'] = __('node/default/index');
-        			$i = 1;
-	        		foreach($d as $_k=>$_d){   
-	        			$out[$i]['name'] = __($_d[1]);
-	        			$out[$i]['url'] = 'node/query/index';
-	        			$out[$i]['params'] = array('fid'=>$_k); 
-	        			$i++;
-	        		} 
-	        		$v['datas'] = $out;
-        		}
-        		
-        	}  
+        	 
         	
         ?>
         	<?php if($v['datas']){?>

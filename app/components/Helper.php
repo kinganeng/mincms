@@ -39,9 +39,10 @@ class Helper
 		if($type=='checkbox'){
 			$htmlOptions = array( 'class'=>'checkbox' );  
 		}
-		if(!$chtmlField){
+		if(!$chtmlField && method_exists($obj, 'action')){
 			return $obj->action($name,$v['model'],$model->$name);
 		}
+		if(!$chtmlField) return;
 		if(array_key_exists('datas' , $v)){
 			$values = $v['datas']; 
 			$htmlOptions['encode'] = false;

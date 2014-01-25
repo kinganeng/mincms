@@ -1,5 +1,6 @@
 <?php 
 return  array (
+  'action' => '操作',
   'not allow upload' => '不允许上传',
   'img' => '独立图片',
   'gg' => '公告',

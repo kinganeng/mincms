@@ -14,6 +14,7 @@ class DefaultController extends AdminController
 	public $active = array('node.default');
 	function init(){
 		parent::init(); 
+		if(true !== YII_DEBUG)exit('access deny!');
 	}
  
 	public function actionIndex()

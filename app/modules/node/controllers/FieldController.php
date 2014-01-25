@@ -16,6 +16,7 @@ class FieldController extends AdminController
 	public $type;
 	function init(){
 		parent::init(); 
+		if(true !== YII_DEBUG)exit('access deny!');
 		$list = scandir(Yii::getPathOfAlias('application.fields'));
 		foreach($list as $v){
 			$ext = substr($v,-4);
@@ -69,6 +70,7 @@ class FieldController extends AdminController
 		if(isset($_POST['NodeField']))
 		{
 			$model->attributes=$_POST['NodeField']; 
+			$model->name=trim($model->name);
 			$model->widget=$_POST['NodeField']['widget']; 
 			$model->rules=$_POST['NodeField']['rules'];
 			$model->indexes=$_POST['NodeField']['indexes'];

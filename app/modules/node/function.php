@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | NODE ¿ìËÙ²éÑ°±£´æ
+// | NODE å¿«é€ŸæŸ¥å¯»ä¿å­˜
 // +----------------------------------------------------------------------
 // | Copyright (c) 2014 http://mincms.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -41,11 +41,11 @@ class Node{
 		if(!is_object($criteria)) {
 			$id = $criteria;  
 		}
-		 //ËùÒÔ×Ö¶ÎkeyÒÔ¼°¶ÔÓ¦µÄmodel
+		 //æ‰€ä»¥å­—æ®µkeyä»¥åŠå¯¹åº”çš„model
 		 $cache = cache('node__field_table');
 		 $now = $cache[$table];
 		 $realTable = "field_".$table;  
-		 //ÉèÖÃNodeModelµÄ±íÃû 
+		 //è®¾ç½®NodeModelçš„è¡¨å 
 		 NodeModel::$_table = $realTable; 
 		 $t = new NodeModel;
 		 $t->refreshMetaData();
@@ -76,16 +76,16 @@ class Node{
 		 foreach($fields[$table] as $k=>$v){  
 		 	$row[$k] = $rows->$k;
 		 } 
-		 //Ã»ÓÐ»º´æÊÇÓÐÎÊÌâµÄ
+		 //æ²¡æœ‰ç¼“å­˜æ˜¯æœ‰é—®é¢˜çš„
 		 if(!$cache) { 
 		 	return $row;
 		 }  
 		 foreach($now as $k=>$v){
 		 	$name = trim($v->name);
  			$_relation_table = $realTable."_".$name;
- 			//ÕæÊµµÄµÚÈý·½±íµÄÄÚÈÝ
+ 			//çœŸå®žçš„ç¬¬ä¸‰æ–¹è¡¨çš„å†…å®¹
  			$deep = $v->_relation_table; 
-		 	//ÊÇ¶à¸öÖµµÄ£¬²¢ÇÒÊÇ¹ØÁªÆäËû±íµÄÇé¿ö
+		 	//æ˜¯å¤šä¸ªå€¼çš„ï¼Œå¹¶ä¸”æ˜¯å…³è”å…¶ä»–è¡¨çš„æƒ…å†µ
 		 	if($v->relation && $v->mvalue==1){  
 					$allR = CDB()->from($_relation_table)->where('nid=:nid',array(':nid'=>$id))->queryAll();
 					if($allR){
@@ -114,13 +114,13 @@ class Node{
 	
 }
 /**
-* HOOK »º´æÄÚÈÝÀàÐÍ×Ö¶ÎµÄ½á¹¹
+* HOOK ç¼“å­˜å†…å®¹ç±»åž‹å­—æ®µçš„ç»“æž„
 */
 Hook::init('init[].node_content',function(){
 	if(!cache('node__content_field')){
 		Yii::import("application.modules.node.models.NodeContent");
 		Yii::import("application.modules.node.models.NodeField");
-		$rows = NodeContent::model()->findAll(); 
+		$rows = NodeContent::model()->findAll(array('order'=>'sort desc,id desc')); 
 		if($rows){
 			foreach($rows as $v){
 				$data[$v->id] = $v->name;

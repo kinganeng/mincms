@@ -10,10 +10,39 @@
  			label{display:block;}
  			.label{color:black;}
  			#acl label{margin-right:5px;}
+ 			.bs-sidenav li.active  {
+				font-weight: bold;
+				color: #563d7c;
+				background-color: transparent;
+				border-right: 1px solid #563d7c;
+			}
+			.bs-sidenav{
+				background:#eee;
+				padding: 10px;
+ 
+				border:1px solid #eee;
+				 
+				-webkit-border-radius: 6px;
+				-moz-border-radius: 6px;
+			　　
+			}
  		");
  		js(base_url().'/misc/bootstrap/js/bootstrap.min.js');
  	 	js(base_url().'/misc/php.js');
  		widget("imagesloaded",array('tag'=>'img'));	
+    $lang = CDB()->from('languages')->where('is_default=1')->queryRow();
+    $select_id = $lang['id'];
+    js_code("
+      if(!$('#AutoModel_language_id').val()){
+        $('#AutoModel_language_id option').each(function(){
+           if($(this).val()== ".$select_id."){
+            $(this).attr('selected','selected');
+           }
+
+        });
+      }
+    ");
+
  	//	widget('select2');
  	?> 
  	<!--[if lt IE 9]>

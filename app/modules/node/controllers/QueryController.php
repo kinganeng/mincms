@@ -18,6 +18,7 @@ class QueryController extends AdminController
 	function init(){
 		parent::init(); 
 		$this->getid = (int)$_GET['fid'];
+		$this->active = 'node-'.$this->getid;
 		$model = NodeContent::model()->findByPk($this->getid);
 		$this->table = "field_".trim($model->name);
 		$this->title = __($model->discription)?:__($model->name);
